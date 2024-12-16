@@ -8,8 +8,8 @@ import (
 
 func TestAdd(t *testing.T) {
 	calc := Calculator{}
-	result := calc.Add(2, 3)
-	require.Equal(t, 5, result)
+	result := calc.Add(2, 4)
+	require.Equal(t, 6, result)
 	require.NotEmpty(t, result)
 
 }
