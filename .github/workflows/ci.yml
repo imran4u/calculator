@@ -1,0 +1,45 @@
+name: Go CI
+
+on:
+  push:
+    branches:
+      - main # Trigger workflow on push to main branch
+  pull_request:
+    branches:
+      - main # Trigger workflow on pull request targeting main branch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest # Set the operating system to Ubuntu
+
+    steps:
+      # Step 1: Checkout the repository
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Step 2: Set up Go environment
+      - name: Set up Go
+        uses: actions/setup-go@v3
+        with:
+          go-version: '1.22.6'  # Specify the Go version (adjust as needed)
+
+    #   # Step 3: Cache Go modules to speed up subsequent builds
+    #   - name: Cache Go modules
+    #     uses: actions/cache@v3
+    #     with:
+    #       path: | 
+    #         ~/.cache/go-build
+    #         ~/.go/pkg/mod
+    #       key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
+    #       restore-keys: |
+    #         ${{ runner.os }}-go-
+
+      # Step 4: Install dependencies (go get)
+      - name: Install dependencies
+        run: go mod tidy
+
+      # Step 5: Run tests
+      - name: Run tests
+        run: go test -v ./...
+
+    
