@@ -4,12 +4,11 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/imran4u/calculator/calculator"
-
 	"github.com/gin-gonic/gin"
+	"github.com/imran4u/calculator/calculator"
 )
 
-func AddHandler(c *gin.Context) {
+func SubHandler(c *gin.Context) {
 	aStr := c.Query("a")
 	bStr := c.Query("b")
 
@@ -26,6 +25,6 @@ func AddHandler(c *gin.Context) {
 	}
 
 	calculator := &calculator.Calculator{}
-	result := calculator.Add(a, b)
+	result := calculator.Subtract(a, b)
 	c.JSON(http.StatusOK, gin.H{"result": result})
 }

@@ -9,7 +9,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func AddHandler(c *gin.Context) {
+func DivHandler(c *gin.Context) {
 	aStr := c.Query("a")
 	bStr := c.Query("b")
 
@@ -26,6 +26,11 @@ func AddHandler(c *gin.Context) {
 	}
 
 	calculator := &calculator.Calculator{}
-	result := calculator.Add(a, b)
+	result, err := calculator.Div(a, b)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
 	c.JSON(http.StatusOK, gin.H{"result": result})
 }
