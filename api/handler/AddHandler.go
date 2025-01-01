@@ -16,7 +16,7 @@ func AddHandler(c *gin.Context) {
 
 	a, err := strconv.Atoi(aStr)
 	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid parameter a"})
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid a value, it should be integer"})
 		return
 	}
 

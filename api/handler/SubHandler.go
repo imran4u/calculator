@@ -5,6 +5,7 @@ import (
 	"strconv"
 
 	"github.com/gin-gonic/gin"
+	"github.com/imran4u/calculator/api/model"
 	"github.com/imran4u/calculator/calculator"
 )
 
@@ -14,17 +15,21 @@ func SubHandler(c *gin.Context) {
 
 	a, err := strconv.Atoi(aStr)
 	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid parameter a"})
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid a value, it should be integer"})
 		return
 	}
 
 	b, err := strconv.Atoi(bStr)
 	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid parameter b"})
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid b value, it should be integer"})
 		return
 	}
 
 	calculator := &calculator.Calculator{}
 	result := calculator.Subtract(a, b)
-	c.JSON(http.StatusOK, gin.H{"result": result})
+	r := model.SubResult{
+		BaseResult: model.BaseResult{First: a, Second: b},
+		Result:     result,
+	}
+	c.JSON(http.StatusOK, r)
 }

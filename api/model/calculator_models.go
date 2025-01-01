@@ -13,3 +13,13 @@ type MulResult struct {
 	BaseResult
 	Result int `json:"Mul"`
 }
+
+type SubResult struct {
+	BaseResult
+	Result int `json:"Sub"`
+}
+
+type DivResult struct {
+	BaseResult
+	Result int `json:"Div"`
+}
