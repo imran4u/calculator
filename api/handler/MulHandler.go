@@ -4,13 +4,12 @@ import (
 	"net/http"
 	"strconv"
 
+	"github.com/gin-gonic/gin"
 	"github.com/imran4u/calculator/api/model"
 	"github.com/imran4u/calculator/calculator"
-
-	"github.com/gin-gonic/gin"
 )
 
-func AddHandler(c *gin.Context) {
+func MulHandler(c *gin.Context) {
 	aStr := c.Query("a")
 	bStr := c.Query("b")
 
@@ -27,11 +26,10 @@ func AddHandler(c *gin.Context) {
 	}
 
 	calculator := &calculator.Calculator{}
-	result := calculator.Add(a, b)
-	r := model.AddResult{
+	result := calculator.Multiply(a, b)
+	r := model.MulResult{
 		BaseResult: model.BaseResult{First: a, Second: b},
 		Result:     result,
 	}
-
 	c.JSON(http.StatusOK, r)
 }

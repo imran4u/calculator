@@ -1,12 +1,17 @@
 package main
 
-import "github.com/gin-gonic/gin"
+import (
+	"github.com/gin-gonic/gin"
+	"github.com/imran4u/calculator/api/handler"
+)
 
 func main() {
-	// c := calculator.Calculator{}
-	// fmt.Println(c.Add(2, 5))
-	r := gin.Default()
+	router := gin.Default()
 
-	r.GET("/add" AddHandler)
+	router.GET("/add", handler.AddHandler)
+	router.GET("/sub", handler.SubHandler)
+	router.GET("/mul", handler.MulHandler)
+	router.GET("/div", handler.DivHandler)
 
+	router.Run(":8080")
 }
