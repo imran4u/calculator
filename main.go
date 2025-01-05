@@ -12,6 +12,6 @@ func main() {
 	router.GET("/sub", handler.SubHandler)
 	router.GET("/mul", handler.MulHandler)
 	router.GET("/div", handler.DivHandler)
-
+	router.POST("/clone", handler.CloneHandler)
 	router.Run(":8080")
 }
