@@ -10,6 +10,7 @@ import (
 )
 
 func CloneHandler(c *gin.Context) {
+	defer c.Request.Body.Close()
 	body, err := io.ReadAll(c.Request.Body)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
@@ -23,13 +24,13 @@ func CloneHandler(c *gin.Context) {
 		return
 	}
 
-	var response = make(map[string]interface{})
-	for key, value := range result {
-		// if key != "password" { // Exclude password
-		if strings.ToLower(key) != "password" {
-			response[key] = value
+	for key := range result {
+
+		if strings.ToLower(key) == "password" {
+			delete(result, key)
+			break
 		}
 	}
 
-	c.JSON(http.StatusOK, response)
+	c.JSON(http.StatusOK, result)
 }
