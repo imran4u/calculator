@@ -1,4 +1,4 @@
-module github.com/imran4u/calculator
+module github.com/alishan/calculator
 
 go 1.22.6
 

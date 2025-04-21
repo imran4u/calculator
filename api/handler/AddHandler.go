@@ -4,8 +4,8 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/imran4u/calculator/api/model"
-	"github.com/imran4u/calculator/calculator"
+	"github.com/alishan/calculator/api/model"
+	"github.com/alishan/calculator/calculator"
 
 	"github.com/gin-gonic/gin"
 )
