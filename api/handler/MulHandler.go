@@ -4,9 +4,9 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/alishan/calculator/api/model"
-	"github.com/alishan/calculator/calculator"
 	"github.com/gin-gonic/gin"
+	"github.com/imran4u/calculator/api/model"
+	"github.com/imran4u/calculator/calculator"
 )
 
 func MulHandler(c *gin.Context) {

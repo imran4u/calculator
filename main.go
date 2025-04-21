@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/alishan/calculator/api/handler"
 	"github.com/gin-gonic/gin"
+	"github.com/imran4u/calculator/api/handler"
 )
 
 func main() {
